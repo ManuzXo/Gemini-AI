@@ -7,7 +7,6 @@ class Prompt {
         let _prompt = document.getElementById("prompt-text") as HTMLInputElement;
         _prompt.addEventListener("keydown", async (_event) => {
             _event.stopPropagation();
-            console.log("keydown");
             if (_event.key === "Enter" && !_event.shiftKey) {
                 await this.EventPrompt(_event, _prompt); 
             } 
