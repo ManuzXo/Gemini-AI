@@ -7,7 +7,6 @@ class Gemini{
     public static Init(){
         const _urlParams = new URLSearchParams(window.location.search);
         let _token = _urlParams.get('t');
-        console.log(_token);
         if(_token == null)
         {
             alert("Gemini token Mancate. Nell'url digitare ?t=<token>");
