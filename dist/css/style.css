@@ -41,7 +41,7 @@ body {
 
 .msg-label {
     color: rgb(255, 255, 255);
-    margin: 3%;
+    /* margin: 3%; */
     word-break: break-word;
     overflow-wrap: break-word;
     flex-grow: 1; /* Permette al contenuto di espandere il box */
@@ -50,14 +50,15 @@ body {
 .prompt-container {
     width: 97%;
     display: flex;
-    align-items: center;
+    align-items: end;
     position: fixed;
     bottom: 2%;
     box-sizing: border-box;
     padding: 1%;
     background-color: gray;
     border-radius: 20px;
-    height: auto; /* Cambiato per adattarsi meglio */
+    max-height: 30%;
+    overflow: hidden;
 }
 
 .prompt-util {
@@ -68,15 +69,37 @@ body {
     padding: 0;
 }
 
-#prompt-text {
-    width: 75%; /* Ridotto per fare spazio al bottone */
+/* #prompt-text {
+    width: 75%;
     height: 30px;
     border-radius: 10px;
     background-color: transparent;
     border-color: transparent;
     color: white;
+    resize: none;
+    overflow: hidden;
+    align-content: center;
+} */
+
+.textarea-wrapper {
+    width: 98%; /* Assicurati che questo si adatti allo spazio disponibile */
+    max-height: 200px; /* Limita l'altezza massima del textarea */
+    overflow: hidden; /* Nasconde il contenuto in eccesso */
 }
 
+#prompt-text {
+    width: 99%; /* Assicura che si adatti al contenitore */
+    height: auto; /* Imposta a auto per il ridimensionamento automatico */
+    min-height: 30px; /* Imposta un'altezza minima */
+    max-height: 200px; /* Limita l'altezza massima */
+    border-radius: 10px;
+    background-color: transparent;
+    border: none; /* Rimuove il bordo */
+    color: white;
+    resize: none; /* Impedisce il ridimensionamento manuale */
+    overflow: auto; /* Mostra la barra di scorrimento quando necessario */
+    align-content: center;
+}
 #prompt-text::placeholder {
     color: white;
 }
@@ -95,6 +118,7 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden; /* Nasconde qualsiasi cosa esca dal bottone */
+    margin: 0.1rem;
 }
 
 #prompt-send > img {
@@ -104,11 +128,13 @@ body {
 }
 
 /* Media query per schermi più piccoli */
-@media (max-width: 600px) {
+@media (max-width: 600px){
     /* .prompt-container {
         bottom: 5%; /* Un po' più di spazio dal fondo
     } */
-    
+    .msg-label{
+        margin: 3%;
+    }
     #prompt-text {
         width: 70%; /* Ridotto ancora per dispositivi molto piccoli */
     }
@@ -118,3 +144,18 @@ body {
         height: 35px;
     }
 }
+
+/* Stile per la scrollbar */
+#prompt-text::-webkit-scrollbar {
+    width: 8px; /* Larghezza della scrollbar */
+}
+
+#prompt-text::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5); /* Colore della parte mobile della scrollbar */
+    border-radius: 10px; /* Angoli arrotondati per la scrollbar */
+}
+
+#prompt-text::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8); /* Colore della parte mobile della scrollbar al passaggio del mouse */
+}
+
