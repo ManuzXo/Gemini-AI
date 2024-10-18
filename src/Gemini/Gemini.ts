@@ -1,12 +1,19 @@
 import { GenerativeModel, GoogleGenerativeAI } from "@google/generative-ai";
 
 class Gemini{
-    public static readonly API_KEY = "AIzaSyAEhCH3rKMQ_RH_cHthwZCg0AVwMNJ2gR4";
     public static m_generativeAI : GoogleGenerativeAI;
     public static m_model: GenerativeModel;
     
     public static Init(){
-        this.m_generativeAI = new GoogleGenerativeAI(this.API_KEY);
+        const _urlParams = new URLSearchParams(window.location.search);
+        let _token = _urlParams.get('t');
+        console.log(_token);
+        if(_token == null)
+        {
+            alert("Gemini token Mancate. Nell'url digitare .com?t=<token>");
+            location.reload();
+        }
+        this.m_generativeAI = new GoogleGenerativeAI(_token as string);
         this.m_model = this.m_generativeAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     }
     public static async Request(_msg : string) : Promise<string>
