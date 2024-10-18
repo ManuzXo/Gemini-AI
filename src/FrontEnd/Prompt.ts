@@ -35,9 +35,9 @@ class Prompt {
         if (_msg.length === 0)
             return;
         _prompt.value = '';
-        Message.CreateMessageUser(_msg);
+        await Message.CreateMessageUser(_msg);
         let _response = await Gemini.Request(_msg);
-        Message.CreateMessageGemini(_response);
+        await Message.CreateMessageGemini(_response);
         _prompt.value = '';
     }
 }

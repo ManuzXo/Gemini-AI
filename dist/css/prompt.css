@@ -1,0 +1,114 @@
+
+
+.prompt-container {
+    width: 97%;
+    display: flex;
+    align-items: end;
+    position: fixed;
+    bottom: 2%;
+    box-sizing: border-box;
+    padding: 1%;
+    background-color: gray;
+    border-radius: 20px;
+    max-height: 30%;
+    overflow: hidden;
+}
+
+.prompt-util {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+
+.textarea-wrapper {
+    width: 98%;
+    /* Assicurati che questo si adatti allo spazio disponibile */
+    max-height: 200px;
+    /* Limita l'altezza massima del textarea */
+    overflow: hidden;
+    /* Nasconde il contenuto in eccesso */
+}
+
+#prompt-text {
+    width: 99%;
+    /* Assicura che si adatti al contenitore */
+    height: auto;
+    /* Imposta a auto per il ridimensionamento automatico */
+    min-height: 30px;
+    /* Imposta un'altezza minima */
+    max-height: 200px;
+    /* Limita l'altezza massima */
+    border-radius: 10px;
+    background-color: transparent;
+    border: none;
+    /* Rimuove il bordo */
+    color: white;
+    resize: none;
+    /* Impedisce il ridimensionamento manuale */
+    overflow: auto;
+    /* Mostra la barra di scorrimento quando necessario */
+    align-content: center;
+}
+
+#prompt-text::placeholder {
+    color: white;
+}
+
+#prompt-text:focus {
+    outline: none;
+}
+
+#prompt-send {
+    width: 40px;
+    /* Dimensione del bottone */
+    height: 40px;
+    border-radius: 50%;
+    /* Rende il pulsante circolare */
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Nasconde qualsiasi cosa esca dal bottone */
+    margin: 0.1rem;
+}
+
+#prompt-send>img {
+    width: 100%;
+    /* Assicura che l'immagine si adatti completamente al contenitore */
+    height: 100%;
+    object-fit: contain;
+    /* Mantiene le proporzioni */
+}
+
+/* Media query per schermi più piccoli */
+@media (max-width: 600px) {
+    #prompt-send {
+        width: 35px;
+        /* Ridotto ancora per i piccoli schermi */
+        height: 35px;
+    }
+}
+
+/* Stile per la scrollbar */
+#prompt-text::-webkit-scrollbar {
+    width: 8px;
+    /* Larghezza della scrollbar */
+}
+
+#prompt-text::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    /* Colore della parte mobile della scrollbar */
+    border-radius: 10px;
+    /* Angoli arrotondati per la scrollbar */
+}
+
+#prompt-text::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8);
+    /* Colore della parte mobile della scrollbar al passaggio del mouse */
+}

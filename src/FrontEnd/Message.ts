@@ -1,19 +1,22 @@
+import { marked } from "marked";
+
 class Message{
 
-        public static CreateMessageUser(_msg : string)
+        public static async CreateMessageUser(_msg : string)
         {
             let _separetor = this.MessageSeparetor();
             _separetor.classList.add("left");
-            this.CreateMessage(_separetor, _msg);
+            await this.CreateMessage(_separetor, _msg);
         }
-        public static CreateMessageGemini(_msg: string)
+        public static async CreateMessageGemini(_msg: string)
         {
             let _separetor = this.MessageSeparetor();
-            this.CreateMessage(_separetor, _msg);
+            await this.CreateMessage(_separetor, _msg);
         }
-        private static CreateMessage(_separetor: HTMLElement, _msg: string)
+        private static async CreateMessage(_separetor: HTMLElement, _msg: string)
         {
-            _separetor.appendChild(this.MessageLabel(_msg));
+            let _label = await this.MessageLabel(_msg);
+            _separetor.appendChild(_label);
             this.GetMSGContainer().appendChild(_separetor);
             _separetor.scrollIntoView({
                 behavior: 'smooth', // Scorrimento animato
@@ -26,13 +29,14 @@ class Message{
             _separetor.className = "msg-separetor";
             return _separetor;
         }
-        private static MessageLabel(_msg: string) : HTMLLabelElement
+        private static async MessageLabel(_msg: string) : Promise<HTMLLabelElement>
         {
             let _label = document.createElement("label") as HTMLLabelElement;
             _label.className = "msg-label";
-            _label.innerHTML = _msg;
+            _label.innerHTML =  await marked.parse(_msg);
             return _label;
         }
+        
         private static GetMSGContainer = ():HTMLElement => document.querySelector(".msg-container") as HTMLElement;
 }
 export default Message;

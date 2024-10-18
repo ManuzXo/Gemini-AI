@@ -1,0 +1,67 @@
+
+.msg-container {
+    flex-grow: 1;
+    overflow: hidden;
+    padding: 1%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    /* Permette ai box di disporre verticalmente */
+}
+
+.msg-separetor {
+    max-width: 90%;
+    display: flex;
+    background-color: rgb(122, 122, 122);
+    border-radius: 30px;
+    margin-bottom: 3%;
+    padding: 1%;
+    align-self: flex-start;
+    /* Fa sì che i box si allineino a sinistra per i messaggi a sinistra */
+}
+
+.msg-separetor.left {
+    align-self: flex-end;
+    /* Fa sì che i box a sinistra si allineino a destra */
+}
+.msg-label {
+    color: rgb(255, 255, 255);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    flex-grow: 1;
+    /* padding: 10px;  */
+    max-width: 100%; /* Assicura che il contenitore non superi la larghezza */
+    overflow: hidden;
+}
+
+.msg-label pre {
+    background-color: #2d2d2d; /* Sfondo del codice */
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto; /* Aggiunge scroll orizzontale quando necessario */
+    white-space: pre-wrap; /* Mantiene gli spazi e va a capo se necessario */
+}
+
+.msg-label code {
+    color: #f8f8f2; /* Colore del testo */
+    background-color: #2d2d2d; /* Sfondo del codice inline */
+    padding: 2px 4px;
+    border-radius: 5px;
+    font-family: monospace;
+}
+
+.msg-label strong {
+    color: #ffcc00; /* Colore per il grassetto */
+}
+
+.msg-label a {
+    color: #00aaff; /* Colore per i link */
+    text-decoration: underline;
+}
+
+
+@media (max-width: 600px) {
+    .msg-label {
+        margin: 3%;
+    }
+}
