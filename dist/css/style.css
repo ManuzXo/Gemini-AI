@@ -135,9 +135,9 @@ body {
     .msg-label{
         margin: 3%;
     }
-    #prompt-text {
-        width: 70%; /* Ridotto ancora per dispositivi molto piccoli */
-    }
+    /* #prompt-text {
+        width: 70%; 
+    } */
 
     #prompt-send {
         width: 35px; /* Ridotto ancora per i piccoli schermi */
