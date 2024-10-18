@@ -1,2 +1,6 @@
-Node version v20.17.0\n
-dist folder include all file for the frontEnd
+
+# Configuration
+Node version v20.17.0
+
+dist Folder include tutti i file per il front end
+
