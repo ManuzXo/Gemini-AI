@@ -1,0 +1,120 @@
+body {
+    background-color: rgb(66, 67, 75);
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+    flex-wrap: nowrap;
+    align-content: center;
+}
+
+.container {
+    border-color: rgb(255, 145, 0);
+    border-width: 10px;
+    display: flow;
+    justify-items: center;
+    padding: 1%;
+    width: 100%;
+    height: 50%;
+}
+.msg-container {
+    flex-grow: 1;
+    overflow: hidden;
+    padding: 1%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* Permette ai box di disporre verticalmente */
+}
+
+.msg-separetor {
+    max-width: 90%;
+    display: flex;
+    background-color: rgb(122, 122, 122);
+    border-radius: 30px;
+    margin-bottom: 3%;
+    padding: 1%;
+    align-self: flex-start; /* Fa sì che i box si allineino a sinistra per i messaggi a sinistra */
+}
+
+.msg-separetor.left {
+    align-self: flex-end; /* Fa sì che i box a sinistra si allineino a destra */
+}
+
+.msg-label {
+    color: rgb(255, 255, 255);
+    margin: 3%;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    flex-grow: 1; /* Permette al contenuto di espandere il box */
+}
+
+.prompt-container {
+    width: 97%;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 2%;
+    box-sizing: border-box;
+    padding: 1%;
+    background-color: gray;
+    border-radius: 20px;
+    height: auto; /* Cambiato per adattarsi meglio */
+}
+
+.prompt-util {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+#prompt-text {
+    width: 75%; /* Ridotto per fare spazio al bottone */
+    height: 30px;
+    border-radius: 10px;
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+}
+
+#prompt-text::placeholder {
+    color: white;
+}
+
+#prompt-text:focus {
+    outline: none;
+}
+#prompt-send {
+    width: 40px; /* Dimensione del bottone */
+    height: 40px;
+    border-radius: 50%; /* Rende il pulsante circolare */
+    background-color: white; 
+    cursor: pointer;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Nasconde qualsiasi cosa esca dal bottone */
+}
+
+#prompt-send > img {
+    width: 100%; /* Assicura che l'immagine si adatti completamente al contenitore */
+    height: 100%;
+    object-fit: contain; /* Mantiene le proporzioni */
+}
+
+/* Media query per schermi più piccoli */
+@media (max-width: 600px) {
+    /* .prompt-container {
+        bottom: 5%; /* Un po' più di spazio dal fondo
+    } */
+    
+    #prompt-text {
+        width: 70%; /* Ridotto ancora per dispositivi molto piccoli */
+    }
+
+    #prompt-send {
+        width: 35px; /* Ridotto ancora per i piccoli schermi */
+        height: 35px;
+    }
+}
