@@ -10,7 +10,7 @@ class Gemini{
         console.log(_token);
         if(_token == null)
         {
-            alert("Gemini token Mancate. Nell'url digitare .com?t=<token>");
+            alert("Gemini token Mancate. Nell'url digitare ?t=<token>");
             location.reload();
         }
         this.m_generativeAI = new GoogleGenerativeAI(_token as string);
