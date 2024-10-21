@@ -1,15 +1,17 @@
 import { GenerativeModel, GoogleGenerativeAI } from "@google/generative-ai";
-import Alert from "../FrontEnd/Alert";
+import { Alert, AlertType_e } from "../FrontEnd/Alert";
 
 class Gemini {
     public static m_generativeAI: GoogleGenerativeAI;
     public static m_model: GenerativeModel;
 
-    public static Init() : boolean {
+    public static Init(): boolean {
         const _urlParams = new URLSearchParams(window.location.search);
         let _token = _urlParams.get('t');
         if (_token == null) {
-            Alert.Init("API TOKEN", 'Manca il token per gemini, nell\'url inserire ?t=< token ><br>Per avere il token visitare <a href="https://ai.google.dev/gemini-api/docs/api-key" target="_blank">api-token</a>');
+            Alert.Init("API TOKEN",
+                'Manca il token per gemini, nell\'url inserire ?t=< token ><br>Per avere il token visitare <a href="https://ai.google.dev/gemini-api/docs/api-key" target="_blank">api-token</a>',
+                AlertType_e.error);
             return false;
         }
         this.m_generativeAI = new GoogleGenerativeAI(_token as string);

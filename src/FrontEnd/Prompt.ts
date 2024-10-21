@@ -1,5 +1,5 @@
 import Gemini from "../Gemini/Gemini";
-import Alert from "./Alert";
+import { Alert, AlertType_e } from "./Alert";
 import Message from "./Message";
 
 class Prompt {
@@ -34,7 +34,7 @@ class Prompt {
             }
         }
         catch (_ex: any) {
-            Alert.Init("Gemini API", _ex.message)
+            Alert.Init("Gemini API", _ex.message, AlertType_e.error)
         }
     }
     public static async SendPrompt(_prompt: HTMLInputElement) {

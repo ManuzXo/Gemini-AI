@@ -1,39 +1,45 @@
-#alert-container{
+#alert-container {
     display: contents;
- }
- .alert {
-     position: absolute;
-     background-color: rgb(170, 170, 170);
-     border-radius: 14px;
-     /* width: 50%; */
-     max-width: fit-content;
-     animation: alert-expand 2s forwards; /* 2 secondi di durata, "forwards" mantiene lo stato finale */
-     animation-iteration-count: 1; /* L'animazione avviene una sola volta */
-     height: auto;
-     top: 25%;
-     padding: 10px 10px 20px 10px;
- }
- 
- .alert-title {
-     width: 100%;
-     height: 10%;
-     border-width: 12px;
-     text-align: center;
-     font-style: normal;
-     font-weight: bold;
- }
- .alert-msg{
-     text-align: center;
-     color: rgb(0, 0, 0);
-     word-break: break-word;
-     overflow-wrap: break-word;
-     white-space: pre-line;
- }
- @keyframes alert-expand {
-     from {
-         width: 0;
-     }
-     to {
-         width: 100%;
-     }
- }
+}
+
+.alert {
+    position: absolute;
+    background-color: rgba(170, 170, 170, 1);
+    border-radius: 14px;
+    width: 100%;
+    max-width: fit-content;
+    animation: alert-fade 2s forwards;
+    animation-iteration-count: 1;
+    height: auto;
+    top: 25%;
+    padding: 10px 10px 20px 10px;
+}
+
+.alert-title {
+    width: 100%;
+    height: 10%;
+    border-width: 12px;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.alert-msg {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-line;
+}
+
+@keyframes alert-fade {
+    from {
+        opacity: 0;
+        /* Da invisibile */
+    }
+
+    to {
+        opacity: 1;
+        /* A visibile */
+    }
+}
