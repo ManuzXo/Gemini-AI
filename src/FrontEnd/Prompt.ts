@@ -3,7 +3,7 @@ import Alert from "./Alert";
 import Message from "./Message";
 
 class Prompt {
-    private static m_response: boolean = true;
+    private static m_hasResponse: boolean = true;
     public static Init() {
         let _prompt = document.getElementById("prompt-text") as HTMLInputElement;
         _prompt.removeAttribute("disabled");
@@ -27,10 +27,10 @@ class Prompt {
     public static async EventPrompt(_event: Event, _prompt: HTMLInputElement) {
         try {
             _event.stopPropagation();
-            if (this.m_response) {
-                this.m_response = false;
+            if (this.m_hasResponse) {
+                this.m_hasResponse = false;
                 await this.SendPrompt(_prompt);
-                this.m_response = true;
+                this.m_hasResponse = true;
             }
         }
         catch (_ex: any) {
