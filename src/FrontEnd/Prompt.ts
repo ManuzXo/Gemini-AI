@@ -1,17 +1,19 @@
 import Gemini from "../Gemini/Gemini";
+import Alert from "./Alert";
 import Message from "./Message";
 
 class Prompt {
     private static m_response: boolean = true;
     public static Init() {
         let _prompt = document.getElementById("prompt-text") as HTMLInputElement;
+        _prompt.removeAttribute("disabled");
         _prompt.addEventListener("keydown", async (_event) => {
             _event.stopPropagation();
             if (_event.key === "Enter" && !_event.shiftKey) {
-                await this.EventPrompt(_event, _prompt); 
-            } 
+                await this.EventPrompt(_event, _prompt);
+            }
         });
-        
+
         _prompt.addEventListener("input", async (_event) => {
             _prompt.style.height = 'auto'; // Resetta l'altezza per calcolare il nuovo valore
             _prompt.style.height = (_prompt.scrollHeight) + 'px'; // Imposta l'altezza in base al contenuto
@@ -23,11 +25,16 @@ class Prompt {
         });
     }
     public static async EventPrompt(_event: Event, _prompt: HTMLInputElement) {
-        _event.stopPropagation();
-        if (this.m_response) {
-            this.m_response = false;
-            await this.SendPrompt(_prompt);
-            this.m_response = true;
+        try {
+            _event.stopPropagation();
+            if (this.m_response) {
+                this.m_response = false;
+                await this.SendPrompt(_prompt);
+                this.m_response = true;
+            }
+        }
+        catch (_ex: any) {
+            Alert.Init("Gemini API", _ex.message)
         }
     }
     public static async SendPrompt(_prompt: HTMLInputElement) {

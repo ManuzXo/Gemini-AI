@@ -57,6 +57,11 @@
     color: white;
 }
 
+#prompt-text:disabled::placeholder {
+    color: rgba(255, 255, 255, 0.459);
+}
+
+
 #prompt-text:focus {
     outline: none;
 }
