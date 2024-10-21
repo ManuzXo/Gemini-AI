@@ -6,6 +6,7 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    width: 100%;
     /* Permette ai box di disporre verticalmente */
 }
 
