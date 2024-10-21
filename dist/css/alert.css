@@ -5,7 +5,9 @@
     position: absolute;
     background-color: rgb(170, 170, 170);
     border-radius: 14px;
-    width: 50%;
+    /* width: 50%; */
+    animation: alert-expand 2s forwards; /* 2 secondi di durata, "forwards" mantiene lo stato finale */
+    animation-iteration-count: 1; /* L'animazione avviene una sola volta */
     height: auto;
     top: 25%;
     padding: 10px 10px 20px 10px;
@@ -25,4 +27,12 @@
     word-break: break-word;
     overflow-wrap: break-word;
     white-space: pre-line;
+}
+@keyframes alert-expand {
+    from {
+        width: 0;
+    }
+    to {
+        width: 50%;
+    }
 }
