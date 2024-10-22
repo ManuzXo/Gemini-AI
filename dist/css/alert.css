@@ -13,6 +13,7 @@
     height: auto;
     top: 25%;
     padding: 10px 10px 20px 10px;
+    z-index: 1;
 }
 
 .alert-title {
