@@ -1,4 +1,5 @@
 import Gemini from "../Gemini/Gemini";
+import DeviceDetection from "../Utils/DeviceDetection";
 import { Alert, AlertType_e } from "./Alert";
 import Message from "./Message";
 
@@ -13,12 +14,15 @@ class Prompt {
             _event.stopPropagation();
             if (_event.key === "Enter" && !_event.shiftKey) {
                 _event.preventDefault();
-                _prompt.blur();
+                if(!DeviceDetection.isDesktopDevice())
+                     _prompt.blur();
                 await this.EventPrompt(_event, _prompt);
             }
             if (_event.key === "ArrowUp") {
-                if (this.m_previusMsg != "" && this.m_hasResponse)
+                if (this.m_previusMsg != "" && this.m_hasResponse){
                     _prompt.value = this.m_previusMsg;
+                    _event.preventDefault();
+                }
             }
         });
         _prompt.addEventListener("input", async (_event) => {
