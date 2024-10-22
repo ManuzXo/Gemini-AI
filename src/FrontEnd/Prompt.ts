@@ -12,6 +12,8 @@ class Prompt {
         _prompt.addEventListener("keydown", async (_event) => {
             _event.stopPropagation();
             if (_event.key === "Enter" && !_event.shiftKey) {
+                _event.preventDefault();
+                _prompt.blur();
                 await this.EventPrompt(_event, _prompt);
             }
             if (_event.key === "ArrowUp") {
@@ -32,14 +34,19 @@ class Prompt {
     public static async EventPrompt(_event: Event, _prompt: HTMLInputElement) {
         try {
             _event.stopPropagation();
-            if (!this.m_firstMessage) {
 
-                this.StartChattingAnimation();
-                this.m_firstMessage = true;
-            }
             if (this.m_hasResponse) {
                 this.m_hasResponse = false;
-                await this.SendPrompt(_prompt);
+                let _msg = _prompt.value;
+                if (_msg.length != 0) {
+                    _prompt.value = '';
+                    if (!this.m_firstMessage) {
+                        this.StartChattingAnimation();
+                        this.m_firstMessage = true;
+                    }
+                    this.m_previusMsg = _msg;
+                    await this.SendPrompt(_msg);
+                }
                 this.m_hasResponse = true;
             }
         }
@@ -47,16 +54,11 @@ class Prompt {
             Alert.Init("Gemini API", _ex.message, AlertType_e.error)
         }
     }
-    public static async SendPrompt(_prompt: HTMLInputElement) {
-        let _msg = _prompt.value;
-        if (_msg.length === 0)
-            return;
-        this.m_previusMsg = _msg;
-        _prompt.value = '';
+    public static async SendPrompt(_msg: string) {
+
         await Message.CreateMessageUser(_msg);
         let _response = await Gemini.Request(_msg);
         await Message.CreateMessageGemini(_response);
-        _prompt.value = '';
     }
     public static StartChattingAnimation() {
         let _container = document.querySelector(".prompt-container") as HTMLElement;
