@@ -32,13 +32,12 @@ class Prompt {
 
         let _btnSend = document.getElementById("prompt-send") as HTMLElement;
         _btnSend.addEventListener("click", async (_event) => {
+            _event.stopPropagation();
             await this.EventPrompt(_event, _prompt);
         });
     }
     public static async EventPrompt(_event: Event, _prompt: HTMLInputElement) {
         try {
-            _event.stopPropagation();
-
             if (this.m_hasResponse) {
                 this.m_hasResponse = false;
                 let _msg = _prompt.value;
