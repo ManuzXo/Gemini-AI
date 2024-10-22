@@ -10,21 +10,24 @@ class Prompt {
     public static Init() {
         let _prompt = document.getElementById("prompt-text") as HTMLInputElement;
         _prompt.removeAttribute("disabled");
-        _prompt.addEventListener("keydown", async (_event) => {
-            _event.stopPropagation();
-            if (_event.key === "Enter" && !_event.shiftKey) {
-                _event.preventDefault();
-                if(!DeviceDetection.isDesktopDevice())
-                     _prompt.blur();
-                await this.EventPrompt(_event, _prompt);
-            }
-            if (_event.key === "ArrowUp") {
-                if (_prompt.value === '' && this.m_previusMsg != "" && this.m_hasResponse){
-                    _prompt.value = this.m_previusMsg;
+        if (DeviceDetection.isDesktopDevice()) {
+
+            _prompt.addEventListener("keydown", async (_event) => {
+                _event.stopPropagation();
+                if (_event.key === "Enter" && !_event.shiftKey) {
                     _event.preventDefault();
+                    // if(!DeviceDetection.isDesktopDevice())
+                    //      _prompt.blur();
+                    await this.EventPrompt(_event, _prompt);
                 }
-            }
-        });
+                if (_event.key === "ArrowUp") {
+                    if (_prompt.value === '' && this.m_previusMsg != "" && this.m_hasResponse) {
+                        _prompt.value = this.m_previusMsg;
+                        _event.preventDefault();
+                    }
+                }
+            });
+        }
         _prompt.addEventListener("input", async (_event) => {
             _prompt.style.height = 'auto'; // Resetta l'altezza per calcolare il nuovo valore
             _prompt.style.height = (_prompt.scrollHeight) + 'px'; // Imposta l'altezza in base al contenuto
