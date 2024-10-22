@@ -19,7 +19,7 @@ class Prompt {
                 await this.EventPrompt(_event, _prompt);
             }
             if (_event.key === "ArrowUp") {
-                if (this.m_previusMsg != "" && this.m_hasResponse){
+                if (_prompt.value === '' && this.m_previusMsg != "" && this.m_hasResponse){
                     _prompt.value = this.m_previusMsg;
                     _event.preventDefault();
                 }
