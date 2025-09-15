@@ -1,21 +1,15 @@
+# 🤖 Gemini-AI Chat
+<small>Chat bot fatta in <b>TypeScript</b> <img src="img/typescript.svg" width="20" height="20"/></small>
 
-# Configurazione
-Node version v20.17.0
-
-Eseguire per installare i pacchetti: 
+---
+## ✅ Requisiti
+- **Node**: versione utilizzata `v20.17.0`
+## ⚙ Installazione
 ```bash
   npm i
-```
-
-# Info
-dist Folder include tutti i file per il front end
-
-
-# Compilazione
-
-Per compilare il tutto eseguire
-
-```bash
   npm run build
 ```
+## 📁 Output
+Il tutto verrà compilato nella cartella [dist](dist)
+
 
