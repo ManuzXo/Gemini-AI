@@ -12,4 +12,6 @@
 ## 📁 Output
 Il tutto verrà compilato nella cartella [dist](dist)
 
-
+---
+## 👁 Test
+Puoi testare l'applicativo [qui](https://manuzxo.github.io/Gemini-AI/dist)
